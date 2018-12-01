@@ -28,12 +28,13 @@ public class GetPeriodAddress extends AbstractAPI {
 
     private HttpPostMethod httpPostMethod;
 
-    public GetPeriodAddress(String accessToken,String  deviceSerial,int expireTime) {
+    public GetPeriodAddress(String accessToken,String  deviceSerial,int channelNo,int expireTime) {
         this.deviceSerial = deviceSerial;
         this.expireTime = expireTime;
         this.url = ServerConstant.WEB_LIVE_PERIOD_ADDRESS;
         this.method = RequestInfo.Method.POST;
         this.host = ServerConstant.HOST;
+        this.channelNo = channelNo;
         this.contentType = "application/x-www-form-urlencoded";
 
 
