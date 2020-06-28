@@ -31,11 +31,15 @@ public class StopPTZ extends AbstractAPI{
     private HttpPostMethod httpPostMethod;//请求方式
 
     public StopPTZ(String accessToken,String deviceSerial,int direction){
+        this(accessToken, deviceSerial,1, direction);
+    }
+
+    public StopPTZ(String accessToken,String deviceSerial,int channelNo,int direction){
         this.url = ServerConstant.STOP_PTZ;
         this.accessToken = accessToken;
         this.deviceSerial = deviceSerial;
         this.direction = direction;
-
+        this.channelNo = channelNo;
         HttpUtil httpUtil = new HttpUtil();
         Map<String,Object> headMap = httpUtil.setHeadMap(host,contentType);
         httpPostMethod = new HttpPostMethod(method);

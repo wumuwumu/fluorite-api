@@ -29,8 +29,11 @@ public class StartPTZ extends AbstractAPI {
     private int speed;
 
     private HttpPostMethod httpPostMethod;//请求方式
-
     public StartPTZ(String accessToken,String deviceSerial,int direction,int speed){
+        this(accessToken,deviceSerial,1,direction,speed);
+    }
+
+    public StartPTZ(String accessToken,String deviceSerial,int channelNo,int direction,int speed){
         this.url = ServerConstant.START_PTZ;
         this.deviceSerial = deviceSerial;
         this.accessToken = accessToken;
@@ -39,6 +42,7 @@ public class StartPTZ extends AbstractAPI {
         this.method = RequestInfo.Method.POST;
         this.host = ServerConstant.HOST;
         this.contentType = "application/x-www-form-urlencoded";
+        this.channelNo = channelNo;
 
         HttpUtil httpUtil = new HttpUtil();
         Map<String,Object> headMap = httpUtil.setHeadMap(host,contentType);

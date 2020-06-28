@@ -3,7 +3,6 @@ package cn.sciento.fluorite.api.account;
 import cn.sciento.fluorite.api.AbstractAPI;
 import cn.sciento.fluorite.constants.ServerConstant;
 import cn.sciento.fluorite.http.HttpPostMethod;
-import cn.sciento.fluorite.response.BaseDeviceResponse;
 import cn.sciento.fluorite.response.BasicResponse;
 import cn.sciento.fluorite.response.account.AccountInfoResponse;
 import cn.sciento.fluorite.response.account.CreateAccountResponse;
@@ -15,23 +14,21 @@ import org.apache.http.HttpResponse;
 import java.io.IOException;
 import java.util.Map;
 
-public class CreateAccountApi extends AbstractAPI {
+public class GetAccountApi extends AbstractAPI {
 
-
-    private String accountName;//账号名称
-    private String password;//账号密码
+    private String accountName; //账号名称
+    private String accountId; // 账号id
     private HttpPostMethod httpMethod;//请求方式
 
 
-    public CreateAccountApi ( String accessToken, String accountName,String password) {
-        this.url = ServerConstant.CREATE_ACCOUNT;
+    public GetAccountApi ( String accessToken, String accountName,String accountId) {
+        this.url = ServerConstant.GET_ACCOUNT_INFO;
         this.accessToken = accessToken;
         this.accountName = accountName;
-        String mdPassword = MD5Util.code("AppKey#"+password);
-        if(mdPassword == null){
-            throw new NullPointerException("密码加密失败");
+        this.accountId = accountId;
+        if(accountName == null && accountId == null){
+            throw new NullPointerException("账号名称和账号id不能同时为空");
         }
-        this.password = mdPassword.toLowerCase();
         HttpUtil httpUtil = new HttpUtil();
         Map<String,Object> headMap = httpUtil.setHeadMap(host,contentType);
         httpMethod = new HttpPostMethod(method);
@@ -39,7 +36,7 @@ public class CreateAccountApi extends AbstractAPI {
 
         Map<String,Object> bodyMap = httpUtil.setBodyMap(accessToken,null,null);
         bodyMap.put("accountName",this.accountName);
-        bodyMap.put("password",this.password);
+        bodyMap.put("accountId",this.accountId);
         httpMethod.setCompleteUrl(url,bodyMap);
     }
 
@@ -60,6 +57,5 @@ public class CreateAccountApi extends AbstractAPI {
         }
         return response;
     }
-
 
 }

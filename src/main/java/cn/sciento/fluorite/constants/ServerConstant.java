@@ -23,6 +23,9 @@ public interface ServerConstant {
     String GET_DEVICE_INFO = "https://open.ys7.com/api/lapp/device/info";
     String GET_CAMERA_LIST = "https://open.ys7.com/api/lapp/camera/list";
 
+    // 警告信息列表
+    String GET_ALARM_LIST  = "https://open.ys7.com/api/lapp/alarm/list";
+    String GET_DEVICE_ALARM_LIST = "https://open.ys7.com/api/lapp/alarm/device/list";
     //web设备直播查询设置
     String WEB_LIVE_PERIOD_ADDRESS  = "https://open.ys7.com/api/lapp/live/address/limited";
     String WEB_LIVE_ADDRESS_LIST = "https://open.ys7.com/api/lapp/live/video/list";
@@ -34,4 +37,23 @@ public interface ServerConstant {
 
     //设备配置
     String STOP_VIDEO_ENCRYPT = "https://open.ys7.com/api/lapp/device/encrypt/off";
+
+    // 账号管理
+    String CREATE_ACCOUNT = "https://open.ys7.com/api/lapp/ram/account/create";
+
+    String GET_ACCOUNT_INFO = "https://open.ys7.com/api/lapp/ram/account/get";
+
+    String GET_ACCOUNT_LIST = "https://open.ys7.com/api/lapp/ram/account/list";
+
+    String CHANGE_PASSWORD = "https://open.ys7.com/api/lapp/ram/account/updatePassword";
+
+    String SET_POLICY = "https://open.ys7.com/api/lapp/ram/policy/set";
+
+    String ADD_STATEMENT = "https://open.ys7.com/api/lapp/ram/statement/add";
+
+    String DELETE_STATEMENT = "https://open.ys7.com/api/lapp/ram/statement/delete";
+
+    String GET_SUB_TOKEN = "https://open.ys7.com/api/lapp/ram/token/get";
+
+
 }
