@@ -46,4 +46,14 @@
 
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <!-- nexus服务器中用户名：在settings.xml中<server>的id-->
+            <id>farm</id>
+            <name>fluorite-api</name>
+            <url>http://192.168.1.56:8086/repository/farm/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </repository>
+    </distributionManagement>
+
 </project>
